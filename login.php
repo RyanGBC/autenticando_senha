@@ -15,10 +15,6 @@
         } else {
             echo "Senha incorreta!";
         }
-        } else {
-            
-            echo "Senha incorreta!";
-        }
 
 ?>
 
