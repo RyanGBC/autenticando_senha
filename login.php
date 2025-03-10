@@ -10,14 +10,15 @@
 
         $usuario = $sql_exec->fetch_assoc();
 
-        if($usuario['email'] == $email && password_verify($senha, $usuario['senha'])){
-            
-            echo "Autenticado com sucesso!";
+        if($usuario['email'] == $email && password_verify($senha, $usuario['senha'])) {
+            echo "Autenticado com sucesso! ";
+        } else {
+            echo "Senha incorreta!";
+        }
         } else {
             
             echo "Senha incorreta!";
         }
-    }
 
 ?>
 
@@ -27,13 +28,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <h1>LOGUE NO SITE DE PHP</h1>
     <form action="" method="POST">
-        <input type="text" name="email" placeholder="email"><br><br>
-        <input type="password" name="senha" placeholder="senha"><br><br>
-        <button type="submit" name="login">Logar</button>
+        <input type="text" name="email" placeholder="email" id="cxinputs"><br><br>
+        <input type="password" name="senha" placeholder="senha" id="cxinputs"><br><br>
+        <button type="submit" name="login" id="cxlogin">Logar</button>
     </form>
 </body>
 </html>
