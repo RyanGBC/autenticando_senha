@@ -22,6 +22,7 @@
 </head>
 <body>
     <h1>Site de LOGIN em PHP</h1>
+    </h2>Cadastre-se</h2>
     <form action="" method="POST">
   <div class="row justify-content-center">
     <div class="col-md-6 col-lg-4">
