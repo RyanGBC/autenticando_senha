@@ -1,64 +1,62 @@
 <?php
-    if(isset($_POST['email'])){
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-        include_once('conexao.php');
+if(isset($_POST['email'])){
+    include_once('conexao.php');
 
-        $email = $_POST['email'];
-        $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+    $email = $_POST['email'];
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-        $mysqli->query("INSERT INTO clientes(email,senha) VALUES('$email','$senha') ");
+    $resultado = $mysqli->query("INSERT INTO clientes(email,senha) VALUES('$email','$senha')");
+
+    if ($resultado) {
+        echo "<script>alert('Usuário cadastrado com sucesso!');</script>";
+    } else {
+        echo "Erro: " . $mysqli->error;
     }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Site de LOGIN em PHP</h1>
-    </h2>Cadastre-se</h2>
-    <form action="" method="POST">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4">
-      <form action="" method="POST">
-      <form action="" method="POST">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Endereço de Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">Nos nunca compartilhamos seu email com terceiros</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Senha</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Lembrar me</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Cadastrar</button>
-</form>
-      </form>
+  <h1>Site de LOGIN em PHP</h1>
+  <h2 class="text-center">Cadastre-se</h2>
+
+  <form action="" method="POST">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="mb-3">
+          <label for="email" class="form-label">Endereço de Email</label>
+          <input type="email" name="email" class="form-control" id="email" required>
+          <div id="emailHelp" class="form-text">Nós nunca compartilhamos seu email com terceiros</div>
+        </div>
+        <div class="mb-3">
+          <label for="senha" class="form-label">Senha</label>
+          <input type="password" name="senha" class="form-control" id="senha" required>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Lembrar me</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a href="login.php" class="d-block mt-3 text-center">Já tenho uma conta</a>
+      </div>
     </div>
-  </div>
-</div>
-    <a href="login.php">Já tenho uma conta</a>
-    </main>
+  </form>
 </body>
 </html>
 
-<style type="text/css" media="screen">
-    a {
-        text-align: center;
-        display: block;
-        margin-top: 10px;
-    }
-    h1 {
+<style>
+  h1 {
     text-align: center;
     margin-top: 0px;
     color: #007bff;
@@ -66,8 +64,6 @@
     padding: 50px 0;
     margin-bottom: 150px;
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    box-sizing: border-box; 
-}
+    box-sizing: border-box;
+  }
 </style>
